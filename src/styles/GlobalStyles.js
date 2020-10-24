@@ -10,7 +10,10 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
   }
 
-  html {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: 'Dosis', sans-serif;
   }
 
