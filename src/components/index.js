@@ -1,3 +1,3 @@
-import Questionaire from './Questionaire';
+import QuestionCard from './QuestionCard';
 
-export { Questionaire };
+export { QuestionCard };
