@@ -1,98 +1,50 @@
 import styled from 'styled-components';
 
 const Spinner = styled.div`
-  display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
+  border: 4px solid #240229;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.1),
+    10px 10px 10px rgba(138, 138, 138, 0.4),
+    inset -5px -5px 5px rgba(255, 255, 255, 0.2),
+    inset 10px 10px 10px rgba(120, 120, 120, 0.4);
 
-  div {
-    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    transform-origin: 40px 40px;
-
-    &:nth-child(1) {
-      animation-delay: -0.036s;
-
-      &:after {
-        top: 63px;
-        left: 63px;
-      }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      right: 25px;
+      bottom: 25px;
+      z-index: 10;
+      background: #282828;
+      border-radius: 50%;
+      border: 2px solid #240229;
+      box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+        inset 3px 3px 5px rgba(138, 138, 138, 0.5);
     }
 
-    &:nth-child(2) {
-      animation-delay: -0.072s;
+    span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-image: linear-gradient(
+        -225deg,
+        #7F0092 0%,
+        #0046A3 50%,
+        #0078FF 100%
+      );
 
-      &:after {
-        top: 68px;
-        left: 56px;
-      }
+      filter: blur(20px);
+      z-index: -1;
+      animation: animate 0.5s linear infinite;
     }
 
-    &:nth-child(3) {
-      top: 71px;
-      left: 48px;
-    }
-
-    &:nth-child(4) {
-      animation-delay: -0.144s;
-
-      &:after {
-        top: 72px;
-        left: 40px;
-      }
-    }
-
-    &:nth-child(5) {
-      animation-delay: -0.18s;
-
-      &:after {
-        top: 71px;
-        left: 32px;
-      }
-    }
-
-    &:nth-child(6) {
-      animation-delay: -0.216s;
-
-      &:after {
-        top: 68px;
-        left: 24px;
-      }
-    }
-
-    &:nth-child(7) {
-      animation-delay: -0.252s;
-
-      &:after {
-        top: 63px;
-        left: 17px;
-      }
-    }
-
-    &:nth-child(8) {
-      animation-delay: -0.288s;
-
-      &:after {
-        top: 56px;
-        left: 12px;
-      }
-    }
-  }
-
-  &:after {
-    content: " ";
-    display: block;
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #fff;
-    margin: -4px 0 0 -4px;
-  }
-
-
-
-  @keyframes lds-roller {
+  @keyframes animate {
     0% {
       transform: rotate(0deg);
     }

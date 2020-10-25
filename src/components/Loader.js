@@ -3,8 +3,8 @@ import Spinner from '../styles/LoaderStyles';
 
 const Loader = () => {
   return (
-    <Spinner>
-      <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    <Spinner className='mb-4'>
+      <span></span>
     </Spinner>
   )
 }

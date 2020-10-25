@@ -44,7 +44,7 @@ function App() {
     ) : (
       <>
         <Loader />
-        <h2 className='text-2xl text-white'>Loading...</h2>
+        <h2 className='text-2xl text-white text-center'>Loading...</h2>
       </>
     );
 };
