@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { v4 as uuid_v4 } from "uuid";
 
 
@@ -12,7 +12,7 @@ const QuestionaCard = ({
 
   return (
     <>
-      <h3 className='text-2xl text-white'>
+      <h3 className='text-2xl text-white mb-4'>
         {seconds}
       </h3>
       <div className="bg-white text-blue-800 p-10 rounded-lg shadow-md">

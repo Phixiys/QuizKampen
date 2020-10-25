@@ -1,3 +1,4 @@
 import QuestionCard from './QuestionCard';
+import Loader from './Loader';
 
-export { QuestionCard };
+export { QuestionCard, Loader };
