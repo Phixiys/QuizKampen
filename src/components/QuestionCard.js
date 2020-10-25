@@ -3,6 +3,7 @@ import { v4 as uuid_v4 } from "uuid";
 
 
 const QuestionaCard = ({
+  seconds,
   showAnswers,
   handleAnswer,
   data: { question, correct_answer, incorrect_answers },
@@ -11,6 +12,9 @@ const QuestionaCard = ({
 
   return (
     <>
+      <h3 className='text-2xl text-white'>
+        {seconds}
+      </h3>
       <div className="bg-white text-blue-800 p-10 rounded-lg shadow-md">
         <h2 className='text-2xl' dangerouslySetInnerHTML={{ __html: question }} />
       </div>

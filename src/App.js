@@ -45,9 +45,9 @@ function App() {
         data={questions[currentIndex]}
         showAnswers={showAnswers}
         handleAnswer={handleAnswer}
+        seconds={seconds}
       />
       )}
-      {seconds}
     </div>
     ) : (
       <h2 className='text-2xl text-white'>Loading...</h2>
