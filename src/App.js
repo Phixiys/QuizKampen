@@ -8,6 +8,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
+  // const [timeLeft, setTimeLeft] = useState(null);
 
   useEffect(() => {
     fetch(API_URL)
@@ -17,28 +18,54 @@ function App() {
       });
   }, []);
 
+  // useEffect(() => {
+  //   if (timeLeft === 0) {
+  //     setTimeLeft(null)
+  //   }
+  //   if (!timeLeft) return;
+  //   const intervalId = setInterval(() => {
+
+  //     setTimeLeft(timeLeft - 1);
+  //   }, 1000);
+  //   return () => clearInterval(intervalId);
+  // }, [timeLeft]);
+
   const handleAnswer = answer => {
     const newIndex = currentIndex + 1;
     setCurrentIndex(newIndex);
-      // Prevent getting questions two times...
+      // Prevent getting questions rerender twice...
       if (answer === questions[currentIndex].correct_answer) {
         // Increase the score by one
         setScore(score + 1);
       }
 
-    // setShowAnswers(true);
+    setShowAnswers(true);
+    // setTimeLeft(15);
   };
 
-  return questions.length > 0 ? (
+  // Didn't quite get the timer to work.
+  // Need to find a way to stop it from rerendering every second.
+  // Need to how to implement the timer in a good way.
+
+  return (questions.length > 0 ? (
     <div className="container">
       {currentIndex >= questions.length ? (
-        <h1 className='text-3xl text-white fonst-bold'>Your score: {score}</h1>
+        <div> {/* Score Card */}
+          <h1 className='text-3xl text-blue-500 bg-white rounded p-4 mb-4 font-bold'>Your score: {score} / {questions.length}</h1>
+          <h2 className='text-2xl text-green-500 bg-white rounded p-4 mb-4'>Total correct answers: {score}</h2>
+          <h2 className='text-2xl text-red-500 bg-white rounded p-4'>Total incorrect answers: {questions.length - score}</h2>
+        </div>
     ) : (
-      <QuestionCard
-        data={questions[currentIndex]}
-        showAnswers={showAnswers}
-        handleAnswer={handleAnswer}
-      />
+      <div>
+        <div className='flex justify-end bg-white p-4 rounded text-blue-800 mb-4'>
+            <span>Question: {currentIndex + 1}</span> / {questions.length}
+        </div>
+        <QuestionCard
+          data={questions[currentIndex]}
+          showAnswers={showAnswers}
+          handleAnswer={handleAnswer}
+        />
+      </div>
     )}
     </div>
     ) : (
@@ -46,7 +73,7 @@ function App() {
         <Loader />
         <h2 className='text-2xl text-white text-center'>Loading...</h2>
       </>
-    );
+    ));
 };
 
 export default App;
